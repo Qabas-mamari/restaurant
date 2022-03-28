@@ -1,19 +1,24 @@
 <x-app-layout>
-    
+
 </x-app-layout>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
 
     @include('admin.admincss')
 
-  </head>
-  <body>
+</head>
 
-    @include('admin.navbar') 
+<body>
 
-    @include('admin.adminscript')
+    <div class="container-scroller">
+        @include('admin.navbar')
+    </div>
     
-  </body>
+    @include('admin.adminscript')
+
+</body>
+
 </html>
