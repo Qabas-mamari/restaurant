@@ -21,9 +21,10 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [HomeController::class , 'index']);
 
 Route::get('/users', [AdminController::class, 'user']);
-Route::get('/deleteUsers/{id}', [AdminController::class, 'deleteUsers']);
 Route::get('/foodmenu', [AdminController::class, 'foodmenu']);
 Route::post('/uploadfood', [AdminController::class, 'upload']);
+Route::get('/deletemenu/{id}', [AdminController::class, 'deleteMenu']);
+Route::get('/deleteUsers/{id}', [AdminController::class, 'deleteUsers']);
 
 Route::get('redirects', [HomeController::class , 'redirects']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
