@@ -23,8 +23,10 @@ Route::get('/', [HomeController::class , 'index']);
 Route::get('/users', [AdminController::class, 'user']);
 Route::get('/foodmenu', [AdminController::class, 'foodmenu']);
 Route::post('/uploadfood', [AdminController::class, 'upload']);
+Route::post('/reservation', [AdminController::class, 'reservation']);
 Route::get('/deletemenu/{id}', [AdminController::class, 'deleteMenu']);
 Route::get('/deleteUsers/{id}', [AdminController::class, 'deleteUsers']);
+Route::get('/viewreservation', [AdminController::class, 'viewreservation']);
 
 Route::get('redirects', [HomeController::class , 'redirects']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

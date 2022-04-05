@@ -62,3 +62,11 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## create table
+Laravel Projects\restaurant> php .\artisan make:model Reservation -m
+Model created successfully.
+Created Migration: 2022_03_30_145856_create_reservations_table
+Laravel Projects\restaurant> php artisan migrate
+Migrating: 2022_03_30_145856_create_reservations_table
+Migrated:  2022_03_30_145856_create_reservations_table (32.00ms)
