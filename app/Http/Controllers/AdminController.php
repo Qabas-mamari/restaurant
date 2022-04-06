@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Food;
+use App\Models\Foodchef;
 use App\Models\Reservation;
 
 class AdminController extends Controller
@@ -35,7 +36,7 @@ class AdminController extends Controller
         return view("admin.foodmenu", compact("data"));
     }
 
-    public function upload(Request $request)
+    public function uploadfood(Request $request)
     {
         $data = new food;
 
@@ -51,6 +52,23 @@ class AdminController extends Controller
 
         $data->save();
         return redirect()->back();
+    }
+
+    public function uploadchef(Request $request)
+    {
+        $data = new foodchef;
+
+        $data->name = $request->name;
+        $data->speciality = $request->speciality;
+
+        $image = $request->image;
+        $imagename = time().'.'.$image->getClientOriginalExtension();
+        $request->image->move('foodchef', $imagename);
+        $data->image = $imagename;
+
+        $data->save();
+        return redirect()->back();
+
     }
 
      public function reservation(Request $request)
@@ -73,5 +91,10 @@ class AdminController extends Controller
     {
         $data = reservation::all();
         return view('admin.adminreservation', compact("data"));
+    }
+
+    public function viewchef()
+    {
+        return view('admin.adminchef');
     }
 }

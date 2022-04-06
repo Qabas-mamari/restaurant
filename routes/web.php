@@ -18,16 +18,17 @@ use App\Http\Controllers\AdminController;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class , 'index']);
-
 Route::get('/users', [AdminController::class, 'user']);
+Route::get('/viewchef', [AdminController::class, 'viewchef']);
 Route::get('/foodmenu', [AdminController::class, 'foodmenu']);
-Route::post('/uploadfood', [AdminController::class, 'upload']);
+Route::post('/uploadfood', [AdminController::class, 'uploadfood']);
+Route::post('/uploadchef', [AdminController::class, 'uploadchef']);
 Route::post('/reservation', [AdminController::class, 'reservation']);
 Route::get('/deletemenu/{id}', [AdminController::class, 'deleteMenu']);
 Route::get('/deleteUsers/{id}', [AdminController::class, 'deleteUsers']);
 Route::get('/viewreservation', [AdminController::class, 'viewreservation']);
 
+Route::get('/', [HomeController::class , 'index']);
 Route::get('redirects', [HomeController::class , 'redirects']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
