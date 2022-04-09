@@ -14,19 +14,24 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-// Route::get('/main', function () {
-//     return view('welcome');
-// });
+// @Qabas-mamari
+// 
 
 Route::get('/users', [AdminController::class, 'user']);
-Route::get('/viewchef', [AdminController::class, 'viewchef']);
+Route::get('/deleteUsers/{id}', [AdminController::class, 'deleteUsers']);
+
 Route::get('/foodmenu', [AdminController::class, 'foodmenu']);
 Route::post('/uploadfood', [AdminController::class, 'uploadfood']);
-Route::post('/uploadchef', [AdminController::class, 'uploadchef']);
-Route::post('/reservation', [AdminController::class, 'reservation']);
 Route::get('/deletemenu/{id}', [AdminController::class, 'deleteMenu']);
-Route::get('/deleteUsers/{id}', [AdminController::class, 'deleteUsers']);
+
+Route::post('/reservation', [AdminController::class, 'reservation']);
 Route::get('/viewreservation', [AdminController::class, 'viewreservation']);
+
+Route::get('/viewchef', [AdminController::class, 'viewchef']);
+Route::post('/uploadchef', [AdminController::class, 'uploadchef']);
+Route::get('/updatechef/{id}', [AdminController::class, 'updatechef']);
+Route::post('updatefoodchef/{id}', [AdminController::class, 'updatefoodchef']);
+Route::get('deletechef/{id}', [AdminController::class, 'deletechef']);
 
 Route::get('/', [HomeController::class , 'index']);
 Route::get('redirects', [HomeController::class , 'redirects']);

@@ -23,12 +23,6 @@ class AdminController extends Controller
         return redirect()-back();
     }
 
-    public function deleteMenu($id){
-        $data= food::find($id);
-        $data->delete();
-        return redirect()->back();
-    }
-
     public function foodmenu()
     {
         $data = food::all(); //food is the table name
@@ -54,21 +48,10 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function uploadchef(Request $request)
-    {
-        $data = new foodchef;
-
-        $data->name = $request->name;
-        $data->speciality = $request->speciality;
-
-        $image = $request->image;
-        $imagename = time().'.'.$image->getClientOriginalExtension();
-        $request->image->move('foodchef', $imagename);
-        $data->image = $imagename;
-
-        $data->save();
+    public function deleteMenu($id){
+        $data= food::find($id);
+        $data->delete();
         return redirect()->back();
-
     }
 
      public function reservation(Request $request)
@@ -95,6 +78,55 @@ class AdminController extends Controller
 
     public function viewchef()
     {
-        return view('admin.adminchef');
+        $data = foodchef::all();
+        return view('admin.adminchef', compact('data'));
+    }
+
+    public function uploadchef(Request $request)
+    {
+        $data = new foodchef;
+
+        $data->name = $request->name;
+        $data->speciality = $request->speciality;
+
+        $image = $request->image;
+        $imagename = time().'.'.$image->getClientOriginalExtension();
+        $request->image->move('foodchef', $imagename);
+        $data->image = $imagename;
+
+        $data->save();
+        return redirect()->back();
+
+    }
+
+    public function updatechef($id)
+    {
+        $data= foodchef::find($id);
+        return view('admin.updatechef', compact('data'));
+    }
+
+    public function updatefoodchef(Request $request, $id)
+    {
+       $data = foodchef::find($id);
+
+       $data->name = $request->name;
+       $data->speciality = $request->speciality;
+
+       $image = $request->image;
+       if ($image) {
+        $imagename = time().'.'.$image->getClientOriginalExtension();
+        $request->image->move('foodchef', $imagename);
+        $data->image = $imagename;
+       }
+
+       $data->save();
+       return redirect()->back();
+
+    }
+    public function deletechef($id)
+    {
+        $data= foodchef::find($id);
+        $data->delete();
+        return redirect()->back();
     }
 }

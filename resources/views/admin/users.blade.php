@@ -16,20 +16,20 @@
         @include('admin.navbar')
 
         <div style="position: relative; top: 60px; right: -60px ">
-            <table border="30px" bgcolor="grey">
+            <table border="30px" bgcolor="grey" class="table" style="color: white">
                 <tr>
-                    <th style="padding: 20px">Name</th>
-                    <th style="padding: 20px">Email</th>
-                    <th style="padding: 20px">Action</th>
+                    <th style="padding: 20px" scope="col">Name</th>
+                    <th style="padding: 20px" scope="col">Email</th>
+                    <th style="padding: 20px" scope="col">Action</th>
                 </tr>
 
                 @foreach ($data as $data)
                     <tr align="center">
-                        <td>{{ $data->name }}</td>
+                        <td >{{ $data->name }}</td>
                         <td>{{ $data->email }}</td>
 
                         @if ($data->usertype == '0')
-                            <td><a href="{{ url('deleteUsers', $data->id) }}">Delete</a></td>
+                            <td><a href="{{ url('deleteUsers', $data->id) }}"><button class="btn btn-danger">Delete</button></a></td>
                         @else
                             <td>Not Allowed</td>
                         @endif

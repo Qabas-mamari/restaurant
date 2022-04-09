@@ -10,8 +10,8 @@
             </div>
         </div>
 
-        @foreach ($data2 as $data)
         <div class="row">
+         @foreach ($data2 as $data)
             <div class="col-lg-4">
                 <div class="chef-item">
                     <div class="thumb">
@@ -29,8 +29,9 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
-        @endforeach
+        
 
     </div>
 </section>

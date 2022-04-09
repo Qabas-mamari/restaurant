@@ -22,32 +22,32 @@
                 @csrf
 
                 <div style="padding: 10px">
-                    <label for="">Title</label>
+                    <label for="">Title</label><br>
                     <input type="text" name="title" id="" placeholder="Write a title" required style="color:black">
                 </div>
 
                 <div style="padding: 10px">
-                    <label for="">Price</label>
+                    <label for="">Price</label><br>
                     <input type="number" name="price" id="" placeholder="Price in OR" required style="color:black">
                 </div>
 
                 <div style="padding: 10px">
-                    <label for="">Image</label>
+                    <label for="">Image</label><br>
                     <input type="file" name="image" id="" required>
                 </div>
 
-                <div style="padding: 10px">
-                    <label for="">Description</label>
+                <div style="padding: 10px"><br>
+                    <label for="">Description</label><br>
                     <input type="text" name="description" id="" placeholder="Write a description" required style="color:black">
                 </div>
 
                 <div style="padding: 10px">
-                    <input type="submit" value="Save">
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
 
             <div>
-                <table>
+                <table  class="table" style="color: white" style="padding:50%"> 
                     <tr>
                         <th style="padding: 30px">Food name</th>
                         <th style="padding: 30px">Price</th>
@@ -62,7 +62,7 @@
                         <td>{{ $data->price }}</td>
                         <td>{{ $data->description }}</td>
                         <td><img src="/foodimage/{{ $data->image }}" alt="" width="100px"></td>
-                        <td><a href="{{ url('/deletemenu', $data->id) }}">Delete</a></td>
+                        <td><a href="{{ url('/deletemenu', $data->id) }}"><button type="submit" class="btn btn-danger">Delete</button></a></td>
                     </tr>
                     @endforeach
 
