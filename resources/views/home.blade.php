@@ -79,17 +79,19 @@ https://templatemo.com/tm-558-klassy-cafe
                             </li>
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                             <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
-                            <li class="scroll-to-section"><a href="#reservation">
+                            <li class="scroll-to-section">
                                 {{-- condtion when the user log or not --}}
 
                                 @auth {{-- if user log --}}
-                                Cart[ {{ $count }} ]
+                                    <a href="{{ url('/showcart', Auth::user()->id) }}">
+                                        Cart[ {{ $count }} ]
+                                    </a>
                                 @endauth
 
                                 @guest {{-- if user not log  --}}
                                     Cart[0]
                                 @endguest
-                                </a></li> 
+                                </li> 
                             <li>
                             @if (Route::has('login'))
                                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">

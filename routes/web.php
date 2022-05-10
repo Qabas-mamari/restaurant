@@ -37,6 +37,8 @@ Route::get('deletechef/{id}', [AdminController::class, 'deletechef']);
 
 Route::get('/', [HomeController::class , 'index']);
 Route::post('addcart/{id}', [HomeController::class, 'addcart']);
+Route::get('/showcart/{id}', [HomeController::class, 'showcart']);
+
 Route::get('redirects', [HomeController::class , 'redirects']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
