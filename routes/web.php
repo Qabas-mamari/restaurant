@@ -27,17 +27,36 @@ Route::get('/deletemenu/{id}', [AdminController::class, 'deleteMenu']);
 Route::post('/reservation', [AdminController::class, 'reservation']);
 Route::get('/viewreservation', [AdminController::class, 'viewreservation']);
 
-Route::get('/viewchef', [AdminController::class, 'viewchef']);
-Route::post('/uploadchef', [AdminController::class, 'uploadchef']);
-Route::get('/updatechef/{id}', [AdminController::class, 'updatechef']);
-Route::post('updatefoodchef/{id}', [AdminController::class, 'updatefoodchef']);
-Route::get('deletechef/{id}', [AdminController::class, 'deletechef']);
+##  Laravel_Tips
+
+// Before
+// Route::get('/viewchef', [AdminController::class, 'viewchef']);
+// Route::post('/uploadchef', [AdminController::class, 'uploadchef']);
+// Route::get('/updatechef/{id}', [AdminController::class, 'updatechef']);
+// Route::post('updatefoodchef/{id}', [AdminController::class, 'updatefoodchef']);
+// Route::get('deletechef/{id}', [AdminController::class, 'deletechef']);
 
 
+// After
+Route::controller(AdminController::class)->group(function (){
+    Route::get('/viewchef', 'viewchef');
+    Route::post('/uploadchef', 'uploadchef');
+    Route::get('/updatechef/{id}', 'updatechef');
+    Route::post('updatefoodchef/{id}', 'updatefoodchef');
+    Route::get('deletechef/{id}', 'deletechef');
+});
 
-Route::get('/', [HomeController::class , 'index']);
-Route::post('addcart/{id}', [HomeController::class, 'addcart']);
-Route::get('/showcart/{id}', [HomeController::class, 'showcart']);
+
+// Route::get('/', [HomeController::class , 'index']);
+// Route::post('addcart/{id}', [HomeController::class, 'addcart']);
+// Route::get('/showcart/{id}', [HomeController::class, 'showcart']);
+
+Route::controller(HomeController::class)->group(function (){
+    Route::get('/' , 'index');
+    Route::post('addcart/{id}', 'addcart');
+    Route::get('/showcart/{id}', 'showcart');
+    Route::get('remove/{id}', 'remove');
+});
 
 Route::get('redirects', [HomeController::class , 'redirects']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

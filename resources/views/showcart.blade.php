@@ -24,7 +24,32 @@ https://templatemo.com/tm-558-klassy-cafe
     <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
-
+    {{-- <style>
+        #customers {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        #customers td, #customers th {
+          border: 1px solid #ddd;
+          padding: 8px;
+          align-content: center;
+        }
+        
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+        
+        #customers tr:hover {background-color: #ddd;}
+        
+        #customers th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: center;
+          background-color: #e95e48;
+          color: white;
+        }
+    </style> --}}
+ 
     </head>
     
     <body>
@@ -125,26 +150,44 @@ https://templatemo.com/tm-558-klassy-cafe
 
 
     {{-- Cart table start --}}
-    <div id="top">
-        <table align="center" bgcolor='yellow'>
+    {{-- <div id="top" class="col-md-6" align='center' style="margin-left: 400px"> --}}
+        <div id="top">
+        <table align="center" bgcolor='white'  id="customers" style="">
             <tr>
-                <th style="padding: 30px">Food name</th>
+                <th style="padding: 30px; ">Food name</th>
                 <th style="padding: 30px">Price</th>
                 <th style="padding: 30px">Quantity</th>
-                <th style="padding: 30px"></th>
+                <th style="padding: 30px">Action</th>
             </tr>
 
             @foreach ($data as $data )
                 <tr>
-                    <th>{{ $data->title }}</th>
-                    <th>{{ $data->price }} OR</th>
-                    <th>{{ $data->quantity }}</th>
-                    <th></th>
+                    <td style="padding: 30px">{{ $data->title }}</td>
+                    <td style="padding: 30px">{{ $data->price }} OR</td>
+                    <td style="padding: 30px">{{ $data->quantity }}</td>
+                   
                 </tr>
             @endforeach
+            @foreach ($data2 as $data2)
+                <tr style="position: relative; top: -340px; right: -370px">
+                    <td style=" padding: 25px">
+                        <a href="{{ url('/remove', $data2->id) }}" class="btn btn-danger">Remove</a>
+                    </td>
+                </tr>
+            @endforeach
+            
         </table>
+
+        <div align="center" style="padding: 10px">
+            <button class="btn btn-primary">Order Now</button>
+        </div>
     
     </div>
+
+
+
+
+
      <!-- ***** Footer Start ***** -->
      <footer>
         <div class="container">
