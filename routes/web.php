@@ -17,15 +17,15 @@ use App\Http\Controllers\AdminController;
 // @Qabas-mamari
 // 
 
-Route::get('/users', [AdminController::class, 'user']);
-Route::get('/deleteUsers/{id}', [AdminController::class, 'deleteUsers']);
+// Route::get('/users', [AdminController::class, 'user']);
+// Route::get('/deleteUsers/{id}', [AdminController::class, 'deleteUsers']);
 
-Route::get('/foodmenu', [AdminController::class, 'foodmenu']);
-Route::post('/uploadfood', [AdminController::class, 'uploadfood']);
-Route::get('/deletemenu/{id}', [AdminController::class, 'deleteMenu']);
+// Route::get('/foodmenu', [AdminController::class, 'foodmenu']);
+// Route::post('/uploadfood', [AdminController::class, 'uploadfood']);
+// Route::get('/deletemenu/{id}', [AdminController::class, 'deleteMenu']);
 
-Route::post('/reservation', [AdminController::class, 'reservation']);
-Route::get('/viewreservation', [AdminController::class, 'viewreservation']);
+// Route::post('/reservation', [AdminController::class, 'reservation']);
+// Route::get('/viewreservation', [AdminController::class, 'viewreservation']);
 
 ##  Laravel_Tips
 
@@ -39,11 +39,29 @@ Route::get('/viewreservation', [AdminController::class, 'viewreservation']);
 
 // After
 Route::controller(AdminController::class)->group(function (){
+
+    //user routes
+    Route::get('/users', 'user');
+    Route::get('/deleteUsers/{id}','deleteUsers');
+
+    //food routes
+    Route::get('/foodmenu',  'foodmenu');
+    Route::post('/uploadfood','uploadfood');
+    Route::get('/deletemenu/{id}', 'deleteMenu');
+
+    //reservation routes
+    Route::post('/reservation', 'reservation');
+    Route::get('/viewreservation', 'viewreservation');
+
+    //chef routes 
     Route::get('/viewchef', 'viewchef');
     Route::post('/uploadchef', 'uploadchef');
     Route::get('/updatechef/{id}', 'updatechef');
     Route::post('updatefoodchef/{id}', 'updatefoodchef');
     Route::get('deletechef/{id}', 'deletechef');
+
+    //orders routes
+    Route::get('orders' , 'orders');
 });
 
 
