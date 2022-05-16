@@ -11,7 +11,7 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
     <title>Klassy Cafe - Restaurant HTML Template</title>
@@ -164,27 +164,37 @@ https://templatemo.com/tm-558-klassy-cafe
                 <th style="padding: 30px">Quantity</th>
                 <th style="padding: 30px">Action</th>
             </tr>
+            <form action="{{ url('orderconfirm') }}" method="POST">
+                @csrf
+                @foreach ($data as $data)
+                    <tr>
+                        <td style="padding: 30px">
+                            <input type="text" name="foodname[]" id="" value="{{ $data->title }}" hidden>
+                            {{ $data->title }}
+                        </td>
+                        <td style="padding: 30px">
+                            <input type="text" name="price[]" id="" value="{{ $data->price }}" hidden>
+                            {{ $data->price }} OR
+                        </td>
+                        <td style="padding: 30px">
+                            <input type="text" name="quantity[]" id="" value="{{ $data->quantity }}" hidden>
+                            {{ $data->quantity }}
+                        </td>
+                    </tr>
+                @endforeach
 
-            @foreach ($data as $data)
-                <tr>
-                    <td style="padding: 30px">{{ $data->title }}</td>
-                    <td style="padding: 30px">{{ $data->price }} OR</td>
-                    <td style="padding: 30px">{{ $data->quantity }}</td>
-                </tr>
-            @endforeach
-
-            @foreach ($data2 as $data2)
-                <tr style="position: relative; top: -260px; right: -370px">
-                    <td style=" padding: 25px">
-                        <a href="{{ url('/remove', $data2->id) }}" class="btn btn-danger">Remove</a>
-                    </td>
-                </tr>
-            @endforeach
+                @foreach ($data2 as $data2)
+                    <tr style="position: relative; top: -260px; right: -370px">
+                        <td style=" padding: 25px">
+                            <a href="{{ url('/remove', $data2->id) }}" class="btn btn-danger">Remove</a>
+                        </td>
+                    </tr>
+                @endforeach
 
         </table>
 
         <div align="center" style="margin-top: -250px">
-            <button class="btn btn-primary" id="order">Order Now</button>
+            <button class="btn btn-primary" id="order" type="button">Order Now</button>
         </div>
 
         <div align="center" style="padding: 10px; display:none" id="appear">
@@ -201,11 +211,12 @@ https://templatemo.com/tm-558-klassy-cafe
                 <input type="text" name="address" placeholder="Address">
             </div>
             <div style="padding: 10px">
-                <button  class="btn btn-success" type="submit" style="color: black">Order Confirm</button>
+                <button class="btn btn-success" type="submit" style="color: black">Order Confirm</button>
                 {{-- <input type="submit" value="Order Confirm" class="btn btn-success" style="color: black"> --}}
-                <button id="close" class="btn btn-danger">Close</button>
+                <button id="close" class="btn btn-danger" type="button">Close</button>
             </div>
         </div>
+        </form>
     </div>
 
 
@@ -245,15 +256,13 @@ https://templatemo.com/tm-558-klassy-cafe
 
     <script type="text/javascript">
         $("#order").click(
-            function()
-            {
+            function() {
                 $("#appear").show();
             }
         );
 
         $("#close").click(
-            function()
-            {
+            function() {
                 $("#appear").hide();
             }
         );

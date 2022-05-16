@@ -56,6 +56,7 @@ Route::controller(HomeController::class)->group(function (){
     Route::post('addcart/{id}', 'addcart');
     Route::get('/showcart/{id}', 'showcart');
     Route::get('remove/{id}', 'remove');
+    Route::post('orderconfirm', 'orderconfirm');
 });
 
 Route::get('redirects', [HomeController::class , 'redirects']);
